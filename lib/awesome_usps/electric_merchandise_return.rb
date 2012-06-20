@@ -37,6 +37,7 @@ module AwesomeUSPS
         xm.PermitIssuingPOCity(post_office.city)
         xm.PermitIssuingPOState(post_office.state)
         xm.PermitIssuingPOZip5(post_office.zip5)
+        xm.PDUFirmName(postage_delivery_unit.name)
         xm.PDUPOBox(postage_delivery_unit.address2)
         xm.PDUCity(postage_delivery_unit.city)
         xm.PDUState(postage_delivery_unit.state)
