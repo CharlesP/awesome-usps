@@ -60,6 +60,7 @@ module AwesomeUSPS
         xm.RecipientName(options[:recipient_name])
         xm.RecipientEMail(options[:recipient_email])
         xm.RMABarcode(options[:barcode])
+        xm.AllowNonCleansedDestAddr("true")
       end
     end
 
