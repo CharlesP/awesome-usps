@@ -46,6 +46,7 @@ module AwesomeUSPS
         xm.PDUState(postage_delivery_unit.state)
         xm.PDUZip5(postage_delivery_unit.zip5)
         xm.PDUZip4(postage_delivery_unit.zip4)
+        xm.RMAPICFlag('False')        
         xm.ServiceType(service_type)
         xm.DeliveryConfirmation(options[:confirmation] || "false")
         xm.InsuranceValue(options[:insurance_value])
@@ -58,7 +59,6 @@ module AwesomeUSPS
         xm.SenderEMail(options[:sender_email])
         xm.RecipientName(options[:recipient_name])
         xm.RecipientEMail(options[:recipient_email])
-        xm.RMAPICFlag('False')
         xm.RMABarcode(options[:barcode])
       end
     end
