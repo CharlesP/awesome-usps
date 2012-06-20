@@ -53,7 +53,7 @@ module AwesomeUSPS
         xm.WeightInPounds("0")
         xm.WeightInOunces(ounces)
         xm.RMA(options[:rma])
-        xm.RMAPICFlag("false")
+        #xm.RMAPICFlag("false")
         xm.ImageType(image_type)
         xm.SenderName(options[:sender_name])
         xm.SenderEMail(options[:sender_email])
