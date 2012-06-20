@@ -33,6 +33,7 @@ module AwesomeUSPS
         xm.CustomerCity(customer.city) #Used for an apartment or suite number. Yes the API is a bit fucked.
         xm.CustomerState(customer.state)
         xm.CustomerZip5(customer.zip5)
+        xm.CustomerZip4(customer.zip4)
         xm.RetailerName(retailer.name)
         xm.RetailerAddress(retailer.address2)
         xm.PermitNumber(permit_number)
