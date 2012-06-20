@@ -58,6 +58,7 @@ module AwesomeUSPS
         xm.SenderEMail(options[:sender_email])
         xm.RecipientName(options[:recipient_name])
         xm.RecipientEMail(options[:recipient_email])
+        xm.RMAPICFlag('False')
         xm.RMABarcode(options[:barcode])
       end
     end
