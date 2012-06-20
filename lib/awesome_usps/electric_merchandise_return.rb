@@ -26,6 +26,7 @@ module AwesomeUSPS
     def merch_return_xml(api_request, service_type, customer, retailer, permit_number, post_office, postage_delivery_unit,  ounces, image_type, options)
       xm = Builder::XmlMarkup.new
       xm.tag!("#{api_request}", "USERID"=>"#{@username}") do
+        xm.Option('RIGHTWINDOW')
         xm.CustomerName(customer.name)
         xm.CustomerAddress(customer.address2)
         xm.CustomerCity(customer.city) #Used for an apartment or suite number. Yes the API is a bit fucked.
