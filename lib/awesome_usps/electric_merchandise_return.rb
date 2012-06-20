@@ -1,7 +1,7 @@
 module AwesomeUSPS
   module ElectricMerchandiseReturn
 
-    def merch_return(service_type, customer, retailer, permit_number, post_office, postage_delivery_unit,  ounces, image_type, api_request = "EMRSV3.0Request", options={})
+    def merch_return(service_type, customer, retailer, permit_number, post_office, postage_delivery_unit,  ounces, image_type, api_request = "EMRSV4.0Request", options={})
       request = merch_return_xml(api_request, service_type, customer, retailer, permit_number, post_office, postage_delivery_unit,  ounces, image_type, options)
       #YES THE API IS SO STUPID THAT WE MUST PASS WHAT TYPE OF MIME TYPE!
       gateway_commit(:merchandise_return, "MerchandiseReturnV4", request, :ssl, image_type)
@@ -13,13 +13,13 @@ module AwesomeUSPS
       retailer =Location.new( :name=> "XYZ Corp.",  :address2 =>"1100 West Avenue")
       permit_number = "293829"
       post_office = Location.new(  :state => 'NY', :city => 'New York', :zip5 => '10018')
-      postage_delivery_unit =  Location.new(  :state => 'NY', :city => 'New York', :address2 =>"223 W 38TH ST" )
+      postage_delivery_unit =  Location.new( :name => 'New York Post Office', :state => 'NY', :city => 'New York', :address2 =>"223 W 38TH ST" )
       ounces = "52"
       options = {:RMA => "13456", :insurance => "500", :confirmation => "true"}
       image_type ="PDF"
-      api_request = "EMRSV3.0CertifyRequest"
+      api_request = "EMRSV4.0CertifyRequest"
       request = merch_return_xml(api_request, service_type, customer, retailer, permit_number, post_office, postage_delivery_unit,  ounces, image_type, options)
-      gateway_commit(:merchandise_return_certify, 'MerchReturnCertifyV3', request, :ssl, image_type)
+      gateway_commit(:merchandise_return_certify, 'MerchReturnCertifyV4', request, :ssl, image_type)
     end
 
     private
