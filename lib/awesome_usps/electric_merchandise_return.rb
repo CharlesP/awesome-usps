@@ -26,7 +26,7 @@ module AwesomeUSPS
     def merch_return_xml(api_request, service_type, customer, retailer, permit_number, post_office, postage_delivery_unit,  ounces, image_type, options)
       xm = Builder::XmlMarkup.new
       xm.tag!("#{api_request}", "USERID"=>"#{@username}") do
-        xm.Option('RIGHTWINDOW')
+        xm.Option('LEFTWINDOW')
         xm.CustomerName(customer.name)
         xm.CustomerAddress1(customer.address1)
         xm.CustomerAddress2(customer.address2)
@@ -81,7 +81,14 @@ module AwesomeUSPS
         postnet = Hpricot.parse(xml)/:postnet
         confirmation_number = Hpricot.parse(xml)/:deliveryconfirmationnumber
         confirmation_number = "none" if confirmation_number == []
-        return {:image_type => image_type, :confirmation_number => confirmation_number.inner_html, :label => label.inner_html, :cost => cost.inner_html, :postnet => postnet.inner_html}
+        
+        if confirmation_number = 'none'
+          confirmation_number_text = ''
+        else
+          confirmation_number_text = confirmation_number.inner_html
+        end
+        
+        return {:image_type => image_type, :confirmation_number => confirmation_number_text, :label => label.inner_html, :cost => cost.inner_html, :postnet => postnet.inner_html}
       end
     end
 
