@@ -82,7 +82,7 @@ module AwesomeUSPS
         confirmation_number = Hpricot.parse(xml)/:deliveryconfirmationnumber
         confirmation_number = "none" if confirmation_number == []
         
-        if confirmation_number = 'none'
+        if confirmation_number == 'none'
           confirmation_number_text = ''
         else
           confirmation_number_text = confirmation_number.inner_html
